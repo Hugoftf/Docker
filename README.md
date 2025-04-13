@@ -8,6 +8,7 @@
   - [Sobre](#Sobre)
   - [Inicio](#Inicio)
   - [Utilizando o Beekeeper](#Utilizando-o-Beekeeper)
+  - [Comandos Docker](#Comandos-Docker)
   
 
 
@@ -90,6 +91,21 @@ Primeira coisa que você vai fazer é ir na aba "new conections" selecionar o My
 
 
 Seguindo esses passos, primeiro criando o database, segundo você precisa selecionar ele para que os outros comandos funcione, e então você cria tabela  e em seguida insere, por mim você da um select.
+
+
+## Comandos Docker
+
+
+Aqui vou mostrar os comandos básicos e útils do docker. Primeiro iremos recaptular os comandos que aprendemos, o primeiro foi o "docker images", ele serve para listar nossas imagens baixadas do docker hub. Depois aprendendos a criar uma imagem com "docker pull (nome da imagem : Versão da imagem). DEpois aprendemos a rodar um container a partir da imagem baixada com o comando "docker run " onde existem algums parametros a se configurar dependendo da imagem, em seguida o comando "docker ps" para listar nossos container que estão rodando.
+
+
+#### Docker Stop
+
+
+#### Docker Start
+
+
+#### Docker delete
 
 
 
