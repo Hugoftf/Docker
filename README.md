@@ -46,9 +46,15 @@ Existe um site chamado [Docker Hub](https://hub.docker.com/) é basicamente um r
 
 O exemplo dessa imagem, da tecnologia MySQL para banco de dados, na esquerda ha a aba tags onde você pode pesquisar qual versão usar com links contendo a funcionalidade e atualização de cada versão, a direta está o comando para rodar no terminal para baixar, dessa forma:
 
-img
+
+![imagem local](/imagens_readme/terminal/baixando_mysql.png)
+
 
 Como não utilizamos nenhuma referencia a tag, ele irá baixar a ultima versão, para você baixar alguma versão em particular bastar utilizar o comando: docker pull msql:(aqui entra o numero da versão que você pesquisou na aba tag no docker hub).
+
+
+
+![imagem local](/imagens_readme/terminal/rodando_container_com_run_terminal.png)
 
 
 
