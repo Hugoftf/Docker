@@ -129,6 +129,13 @@ repare que eu utilizei o comando docker ps -a, ele serve para listar todos os co
 #### Docker delete
 
 
+Para encerrar a parte de comandos básicos de docker o delete:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/deletando_um_container.png)
+
+
+Eu baixei uma imagem e startei um contaier do mongoDB para ilustrar o delete, repare que o container está rodando ou up, e quando eu tento deletar um container que está up ele me retornar erro. Eu preciso primeiro stopar o container para depois deletar, repare que no comando stop eu digitei apenas alguns numeros do qual se refere ao container do mongoDB, e ele reconhece, você pode fazer dessa forma, desde que não tenha outro container com essas iniciais. Por fim o comando para deletar usado é o "docker rm (id ou nome).
 
 
 
