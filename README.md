@@ -96,13 +96,34 @@ Seguindo esses passos, primeiro criando o database, segundo você precisa seleci
 ## Comandos Docker
 
 
-Aqui vou mostrar os comandos básicos e útils do docker. Primeiro iremos recaptular os comandos que aprendemos, o primeiro foi o "docker images", ele serve para listar nossas imagens baixadas do docker hub. Depois aprendendos a criar uma imagem com "docker pull (nome da imagem : Versão da imagem). DEpois aprendemos a rodar um container a partir da imagem baixada com o comando "docker run " onde existem algums parametros a se configurar dependendo da imagem, em seguida o comando "docker ps" para listar nossos container que estão rodando.
+Aqui vou mostrar os comandos básicos e útils do docker. Primeiro iremos recaptular os comandos que aprendemos, o primeiro foi o "docker images", ele serve para listar nossas imagens baixadas do docker hub. Depois aprendendos a criar uma imagem com "docker pull (nome da imagem : Versão da imagem). Depois aprendemos a rodar um container a partir da imagem baixada com o comando "docker run " onde existem algums parametros a se configurar dependendo da imagem, em seguida o comando "docker ps" para listar nossos container que estão rodando.
 
 
 #### Docker Stop
 
 
+Você pode parar o container com o comando docker stop (nome ou id):
+
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/parando_um_container_com_dockerstop.png)
+
+
+Dessa forma se você tentar acessar o mysql pelo beekeeper, ele não vai conseguir conexão
+
+
+
+
 #### Docker Start
+
+
+Para rodar novamente um container já criado basta chamar o comando docker start(nome ou id):
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/startando_container.png)
+
+
+repare que eu utilizei o comando docker ps -a, ele serve para listar todos os container criados e seus status, dessa forma se você não sabe o nome ou id do container que você quer startar você pode utilizar dessa forma
 
 
 #### Docker delete
