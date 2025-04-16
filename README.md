@@ -8,8 +8,9 @@
   - [Sobre](#Sobre)
   - [Inicio](#Inicio)
   - [Utilizando o Beekeeper](#Utilizando-o-Beekeeper)
-  - [Comandos Docker](#Comandos-Docker)
+  - [Comandos Básicos do Docker](#Comandos-Docker)
   - [Adicioando Java](#Adicioando-Java)
+  - [Criando nossa Imagem e Container Docker](#Criando-Imagem-e-Container)
   
 
 
@@ -166,6 +167,90 @@ Depois de rodar para testar o resultado é:
 
 
 ![imagem local](/imagens_readme/bowser/localhost8080.png)
+
+
+
+## Criando Imagem e Container
+
+
+Para criar uma imagem no docker, existe um padrão em que podemos consultar no [dockerdocs no file reference](https://docs.docker.com/reference/dockerfile/), lá encontramos todas as informações sobre comandos, passo a passo, e tudo sobre. O primeiro passo é criar um Dockerfile na nossa aplicação, para facilitar o processo criaremos na pasta raiz da aplicação:
+
+
+![imagem local](/imagens_readme/criação_dockerfile.png)
+
+
+Agora iremos editar esse arquivo. O primeiro parametro que iremos urilizar é o FROM, ele vai dizer qual é a imagem base que eu vou utilizar para criar a minha imagem costumizada, como caso eu quero criar uma imagem java iremos colocar o "openjdk" seguindo da tag que no caso é a versão do jdk, no caso eu estou utilizando a versão 21 no meu pc, então ficaria: "openjdk:21". O proximo comando é chamado de WORKDIR, ele serve para criar uma pasta dentro da imagem que estou criando para copiar, remover, iniciar arquivos dentro dessa pasta. O proximo passo é utilzar o comando COPY ele literalmente serve para copiar algum arquivo que no caso é o arquivo .jar criado a partir do processo de build e deploy do maven, então eu vou utilizar o caminho até o arquivo para copiar ele para a pasta que eu criei com o WORKDIR. O proximo comando é o ENTRYPOINT ele serve para  dizer ao Docker que, ao rodar o container, ele deve executar esse comando, que no nosso caso que ele deve executar o arquivo jar copiado para nova pasta com o comando java.
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/primeiro_passo_para_criar_uma_imagemDocker.png)
+
+
+O proximo passo é buildar essa imagem:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/criando_container_do_meu_projeto_java.png)
+
+
+
+Uma observação a se fazer é na criação de uma imagem utilizamos o --tag para dar o nome da imagem, já na criação de um container utilizamos o -name para dar nome ao container. Vamos verificar agora se a imagem foi criada com sucesso:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/observando_criacao_de_imagem.png)
+
+
+
+Tudo certo na criação de imagem. Agora iremos criar um container a partir dessa imagem:
+
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/criando_container_do_projeto_java1.png)
+
+
+
+Não tem muito mistério na criação de um container, o que precisamos nos atentar é na porta -p 8080:8080, o segundo parametro da porta depois dos :, é o parametro da porta da aplicação java/spring, que por padrão sempre será 8080 então não a modifique, já o primeiro você pode modificar, com ela iremos entrar na aplicação. Para ilutrar esse exemplo irei criar mais um  container com diferente porta:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/criando_container_do_projeto_java2.png)
+
+
+
+Primeiro eu adicionei um novo terminal por que o container java que eu criei está ocupando o terminal, depois eu utilizei um novo nome e outra porta diferente para acessar. Na pratíca podemos acessar aos duas portas:
+
+
+Com a porta 8080:
+
+
+![imagem local](/imagens_readme/bowser/localhost8080.png)
+
+
+
+Com a porta 8081:
+
+
+![imagem local](/imagens_readme/bowser/localhost8081.png)
+
+
+
+Agora irei deletar os dois container para criar um que não ocupe o meu terminal ao inicializar.
+
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/deletando_novos_containers.png)
+
+
+
+Agora irei criar um novo container:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/criando_container_Java_com_domaim.png)
+
+
+
+Quando utilizamos o parametro -d na criação de um container Docker ele rodara o container em detached mode", ou seja, executar o container em segundo plano. A vantagem literalmente desocupar meu terminal e poder stopar o container com id gerado ao criar com esse parametro.
+
+
+
+
 
 
 
