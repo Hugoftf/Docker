@@ -22,7 +22,7 @@
 
 ## Sobre
 
-Aprendendo a utilizar do zero o Docker e todas as suas funcionalidades, com um projeto em que engloba Java e Mysql
+Aprendendo a utilizar do zero o Docker e todas as suas funcionalidades, com um projeto em que engloba Java e MySQL
 
 
 ## Inicio
