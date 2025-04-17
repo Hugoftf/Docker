@@ -3,6 +3,7 @@ package com.github.Hugoftf.convidados;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 public class ConvidadosController {
 
+
+    @Autowired
+    private ConvidadosRepository convidados;
+
     @GetMapping
     public List<Convidados> listaDeConvidados(){
-        List<Convidados> listConvidados = new ArrayList<>();
-        listConvidados.add(new Convidados("Hugo", "13314415512"));
-        listConvidados.add(new Convidados("Ygor", "13315566789"));
-        return listConvidados;
+        return convidados.findAll();
     }
     
 }

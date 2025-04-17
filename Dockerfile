@@ -7,4 +7,4 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21
 WORKDIR /app
 COPY --from=build ./build/target/*.jar ./convidados.jar
-ENTRYPOINT java -jar convidados.jar 
+ENTRYPOINT java -jar convidados.jar
