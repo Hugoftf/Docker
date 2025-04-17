@@ -18,7 +18,7 @@
 
 ## Tecnologias Usadas
 
-[Java](https://www.java.com/pt-BR/) / [Docker](https://www.docker.com/) / [MySQL](https://www.mysql.com/) / [VSCode](https://code.visualstudio.com/) / [Beekeeper](https://www.beekeeperstudio.io/)
+[Java](https://www.java.com/pt-BR/) /  [Spring](https://spring.io/projects/spring-boot) / [Docker](https://www.docker.com/) / [MySQL](https://www.mysql.com/) / [VSCode](https://code.visualstudio.com/) / [Beekeeper](https://www.beekeeperstudio.io/)
 
 ## Sobre
 
