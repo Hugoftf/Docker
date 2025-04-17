@@ -11,6 +11,7 @@
   - [Comandos Básicos do Docker](#Comandos-Docker)
   - [Adicioando Java](#Adicioando-Java)
   - [Criando nossa Imagem e Container Docker](#Criando-Imagem-e-Container)
+  - [Imagem multi-stage build](#Multi-Stage-Build)
   
 
 
@@ -250,9 +251,55 @@ Quando utilizamos o parametro -d na criação de um container Docker ele rodara 
 
 
 
+## Multi-Stage-Build
+
+
+Quando iremos construtir imagem de algum projeto o melhor a se fazer é utilizar o padrão multi-stage build. Com ele evitamos que nossa imagem fique muito pesada com arquivos desnecessários, efenciencia, segurança e conseguimos fazer um versionamento de código caso atualize e você não precise fazer o processo manual, será tudo mais automatico e que realmente importa é o resultado final, no caso do java o arquivo.jar. O primeiro passo é buildar o projeto utilizando o comando do maven ./mvnw clean package, esse comando é reponsavel por empacotar nosso projeto java, o famoso arquivo.jar. A segunda etapa é simplemeste a execução desse arquivo.
+
+A primeira coisa que eu vou fazer é criar um arquivo .dockerignore, ele vai servi para quando eu fizer uma imagem e precisar copiar arquivos ele ignore algumas arquivos que eu citar:
 
 
 
+![imagem local](/imagens_readme/tudo_sobre_docker/mult_stage/dockerignore.png)
+
+
+
+Agora iremos editar o dockerfile:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/mult_stage/novo_arquivo_dockerfile.png)
+
+
+
+Repare no FROM a gente coloca o maven e jdk, isso por que para fazer um build e deploy precisamos do maven, e colocamos um parametro a mais chamado de AS, ele vai servi para apelidar nossa aplicação igual ao comando SQL. Os proximos passo e criar uma pasta chamada build com o comando WORKDIR, e utilizar o comando COPY para copiar todos os arquivos do nosso projeto menos o que foi especificado no git ignore. O proximo comando é o RUN, que vai fazer com que a gente execute uma linha de comando dentro do container sem que encerre as atividades, que no caso será o comando "./mvnw clean package -DskipTest, esse parametro vai servir para não rodar o teste unitario do nosso spring.
+
+Na etapa 2 precisaremos de uma base do jdk novamente, depois criamos uma pasta chamada app e copiamos o arquivo .jar para ela, e aqui que está a malandragem, ao copiarmos o arquivo .jar, utilizamos um parametro a mais que faz com que renomei para convidados.jar, dessa forma quando executarmos ENTRYPOINT só precisamos chamar o arquivo convidados.jar sem que de qualquer problema de versão.
+
+O proximo passo é criar uma imagem:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/mult_stage/buildando_nova_imagem_com_multstage.png)
+
+
+checando:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/mult_stage/docker_imags_checando_nova_imagem.png)
+
+
+Aqui utilizamos o idenficiador do nosso dockerhub no parametro -t(--tag) e o nome da imagem personalizada.
+
+
+Criação do container:
+
+
+![imagem local](/imagens_readme/tudo_sobre_docker/mult_stage/criando_container.png)
+
+
+E testando aplicação:
+
+
+![imagem local](/imagens_readme/bowser/localhost8082.png)
 
 
 
